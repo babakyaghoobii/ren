@@ -19,6 +19,12 @@ def index():
     </body></html>
     """
 
+@app.route('/sub')
+def subscribe():
+    host = request.headers.get('Host', 'localhost')
+    link = f"vless://{UUID}@{host}:443?security=tls&sni=www.aparat.com&type=ws&host=www.aparat.com&path=/&flow=xtls-rprx-vision#Iran-Config"
+    return link
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8080))
     app.run(host='0.0.0.0', port=port)
